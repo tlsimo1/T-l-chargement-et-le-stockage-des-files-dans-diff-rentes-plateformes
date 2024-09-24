@@ -1,0 +1,99 @@
+﻿<Page x:Class="ProjetOCR.ParamsOCRView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:UCGeneraFi="clr-namespace:UCGeneraFi;assembly=UCGeneraFi"
+      xmlns:local="clr-namespace:ProjetOCR"
+       Background="WhiteSmoke"
+      mc:Ignorable="d"  MinWidth="1024" 
+      Title="Params" Loaded="Page_Loaded">
+
+    <Grid  HorizontalAlignment="Stretch"  Width="auto" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch"  Width="auto" >
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" >
+                    <GradientStop Color="#FF789B98" Offset="0.02" />
+                    <GradientStop Color="#FF88C9C9" Offset="0.309" />
+                    <GradientStop Color="#636078" Offset="1.1" />
+                    <GradientStop Color="#FF6A7C7A" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock Text="Paramètres Divers"  FontSize="24" TextAlignment="Left"  Foreground="White" TextWrapping="Wrap" FontFamily="Century Gothic" FontWeight="Regular" Grid.ColumnSpan="2" Margin="20,10,20,0"/>
+        </Grid>
+        <ScrollViewer Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="750">
+            <Grid   >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Height="30" x:Name="tblTVA" Grid.Row="0" Text="Paramètre OCR"  Style="{StaticResource StyleTitrePage}" Margin="15 15 10 15" HorizontalAlignment="Center" />
+                <Border Style="{DynamicResource BrdrContenu}" Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"></ColumnDefinition>
+                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="10"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="*" />
+                            <RowDefinition  Height="*"/>
+                            <RowDefinition  Height="*"/>
+                            <RowDefinition  Height="*" />
+                            <RowDefinition  Height="*"/>
+                            <RowDefinition  Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <ComboBox x:Name="ComboOCR" Tag="Journal"  Grid.Column="1" Height="25" VerticalAlignment="Bottom"  HorizontalAlignment="Stretch"  >
+                            <ComboBoxItem Content="FTP"></ComboBoxItem >
+                            <ComboBoxItem Content="DossierPartager" IsSelected="True"></ComboBoxItem >
+                            <ComboBoxItem Content="DropBox"></ComboBoxItem >
+                            <ComboBoxItem Content="GoogleDrive"></ComboBoxItem >
+                        </ComboBox>
+                        <UCGeneraFi:ucTxtBox x:Name="TxtChemin" Text="{Binding Chemin, Mode=TwoWay}"    FontSize="11"  Titre="Chemin"      Width="auto" Height="50"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="0" KeyUp="TxtNomAppDropBox_KeyUp" />
+                        <UCGeneraFi:ucTxtBox x:Name="TxtLogin"   Text="{Binding Nom, Mode=TwoWay}"  FontSize="11"  Titre="Login"       Width="auto" Height="50"  Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" KeyUp="TxtNomAppDropBox_KeyUp" />
+                        <UCGeneraFi:ucTxtBox x:Name="TxtMotDePass" Text="{Binding MotDePass, Mode=TwoWay}" FontSize="11"  Titre="Mot De Passe"  Width="auto" Height="50"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="1" KeyUp="TxtNomAppDropBox_KeyUp" />
+                        <UCGeneraFi:ucTxtBox x:Name="TxtNomAppDropBox" Text="{Binding Chemin, Mode=TwoWay}" FontSize="11"  Titre="Nom App DropBox"  Width="auto" Height="50"  Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" KeyUp="TxtNomAppDropBox_KeyUp" />
+                        <UCGeneraFi:ucTxtBox x:Name="TxtKeyAppDropBox" Text="{Binding MotDePass, Mode=TwoWay}" FontSize="11"  Titre="Key App DropBox"  Width="auto" Height="50"   Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="2" KeyUp="TxtNomAppDropBox_KeyUp"  />
+                        <UCGeneraFi:ucTxtBox x:Name="TxtNameAppGoogleDrive" Text="{Binding Chemin, Mode=TwoWay}" FontSize="11"  Titre="Nom App GoogleDrive" Width="auto" Height="50"  Grid.Column="1"  HorizontalAlignment="Stretch" Grid.Row="3" KeyUp="TxtNomAppDropBox_KeyUp"  />
+                        <Button x:Name="btnCnx"  Width="200" Height="30" Content="Test Connexion"  Click="btnConnexion_Click" Style="{StaticResource styleVert}"   Grid.Column="3" Grid.Row="3" Margin="54,21,53,0" IsEnabled="False"/>
+                    </Grid>
+                </Border>
+                <Label Grid.Row="5"  Style="{StaticResource styleLblAnnuler}" Visibility="Collapsed" Margin="5 0 0 5" VerticalAlignment="Bottom"  Content="annuler"   />
+                <TextBlock Height="30" Text="Autre" Grid.Row="2"  Style="{StaticResource StyleTitrePage}" Margin="15 0 10 0" HorizontalAlignment="Center" />
+                <Grid  Grid.Row="3" VerticalAlignment="Top" x:Name="Container" >
+                    <Border Style="{DynamicResource BrdrContenu}"  VerticalAlignment="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition Width="325"></ColumnDefinition>
+                                <ColumnDefinition Width="20"></ColumnDefinition>
+                                <ColumnDefinition Width="322"></ColumnDefinition>
+                                <ColumnDefinition Width="1"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55"/>
+                                
+                            </Grid.RowDefinitions>
+                            <UCGeneraFi:ucTxtBox x:Name="TxtParamsOCR" isMontant="True" Titre="Paramètre OCR" VerticalAlignment="Stretch" Margin="10 0 0 0" Width="auto" Height="50"  Grid.Column="1" Grid.Row="0" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+        <Border Grid.ColumnSpan="5"    VerticalAlignment="Center" Grid.Row="3" Visibility="Visible" Width="750" HorizontalAlignment="Left">
+            <Button x:Name="btnEnregistrer" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="150" Height="30"  Content="Enregistrer"  Click="btnEnregistrer_Click" Style="{StaticResource styleVert}"    Grid.Row="5" IsEnabled="False" Margin="0"    />
+        </Border>
+    </Grid>
+</Page>

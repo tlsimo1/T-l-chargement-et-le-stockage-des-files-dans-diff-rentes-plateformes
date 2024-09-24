@@ -1,0 +1,267 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <SolidColorBrush x:Key="CouleurGeneraFi" Color="#FF6F3CAD" />
+
+    <!-- Style pour les textblock Regulier -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="styletblckRegular">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <!-- Style pour les textblock Gras -->
+    <Style BasedOn="{StaticResource styletblckRegular}" TargetType="{x:Type TextBlock}" x:Key="styletblckBold">
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!-- Style pour les TextBlock (Element) -->
+    <Style x:Key="styleTxtBlckElement" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Margin" Value="20,0,0,0" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxWidth" Value="350" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="#FF969696" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="MaxWidth" Value="Infinity" />
+    </Style>
+
+
+  
+
+
+
+
+    <!-- Style pour les TextBlock (Montant de l'Element) -->
+    <Style BasedOn="{StaticResource styleTxtBlckElement}" x:Key="RegularBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0 6 0 0" />
+        <Setter Property="TextAlignment" Value="Right" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <!-- Style pour les TextBlock (Element) -->
+    <Style x:Key="styleTxtBlckGris" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Margin" Value="20,0,0,0" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxWidth" Value="350" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="#6d6d6d" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="MaxWidth" Value="Infinity" />
+    </Style>
+
+    <!-- Style pour les Textblock (Titre) -->
+    <Style BasedOn="{StaticResource styleTxtBlckGris}"  x:Key="TxtBlckGris" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="0,13,0,0" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxWidth" Value="400" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="#6d6d6d"/>
+        <Setter Property="TextAlignment" Value="Right" />
+    </Style>
+
+    <!-- Style pour les Path Ligne droite-->
+    <Style x:Key="stylePathTitre" TargetType="Path">
+        <Setter Property="Fill" Value="{StaticResource CouleurGeneraFi}" />
+        <Setter Property="Stroke" Value="{StaticResource CouleurGeneraFi}" />
+        <Setter Property="Data" Value="M172.97668,39.164L602.0326,39.164" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="Margin" Value="0,0,0,4" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+
+    <!-- Style pour les Path Ligne pointillée -->
+    <Style x:Key="stylePathTitrePointille" TargetType="Path">
+        <Setter Property="StrokeDashArray" Value="1 5" />
+        <Setter Property="StrokeDashOffset" Value="2" />
+        <Setter Property="Fill" Value="#FF3C5BAD" />
+        <Setter Property="Stroke" Value="#FF424242" />
+        <Setter Property="Data" Value="M172.97668,39.164L602.0326,39.164" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="Margin" Value="0,0,0,8" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+
+    <!-- Style pour les Textblock (Titre) -->
+    <Style x:Key="styleTxtBlckTitre" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="#FF3C5BAD" />
+        <Setter Property="Margin" Value="0,13,0,0" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxWidth" Value="400" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+
+    <!-- Style pour les TextBlock (Total du Titre) -->
+    <Style BasedOn="{StaticResource styleTxtBlckTitre}" x:Key="BoldBlock" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,0,0,10" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="MaxWidth" Value="350" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="TextAlignment" Value="Right" />
+    </Style>
+
+    
+   
+
+
+
+    <!-- Style pour les Label (Montant Gras) -->
+    <Style  x:Key="BoldLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="#FF3C5BAD" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+        <Setter Property="MaxWidth" Value="200" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Right" />        
+    </Style>
+
+    <!-- Style pour les Label (Montant Regular) -->
+    <Style  x:Key="RegularLabel" TargetType="Label">
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="Margin" Value="0,7,0,0" />
+        <Setter Property="MaxWidth" Value="200" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Foreground" Value="#FF969696" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+
+    <!-- Style pour les TextBox (Total) -->
+    <Style x:Key="RegularBox" TargetType="TextBox">
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="TextAlignment" Value="Right" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style  BasedOn="{StaticResource RegularBox}" x:Key="BoldBox" TargetType="TextBox" >
+        <Setter Property="Foreground" Value="#FF3C5BAD" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+        <!-- Style pour les entêtes -->
+    <Style x:Key="styleEntete" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="10.667" />
+        <Setter Property="Padding" Value="5,3" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+
+
+    <Style x:Key="BrdrContenu" TargetType="Border">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Margin" Value="20 0 20 0" />
+        <Setter Property="Padding" Value="0 5" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="BorderBrush" Value="#FFD5D5D5" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+
+    <Style TargetType="TextBlock" x:Key="tbLibelle">
+        <Setter Property="Foreground" Value="#FF878393" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Margin" Value="10 0 0 0" />
+    </Style>
+
+
+    <Style TargetType="TextBlock" x:Key="tbTitreForm" >
+        <Setter Property="Foreground" Value="{StaticResource CouleurGeneraFi}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+
+   
+
+    <Style TargetType="TextBlock" x:Key="StyleTitrePage">
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="Foreground" Value="{StaticResource CouleurGeneraFi}" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="Auto" />
+    </Style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

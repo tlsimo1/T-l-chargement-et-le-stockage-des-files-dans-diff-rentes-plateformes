@@ -1,0 +1,253 @@
+﻿<ResourceDictionary x:Class="GeneraFi_TVA.WindowsPopUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       >
+
+    <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ContentPresenter/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MainWindow" 
+           TargetType="{x:Type Window}">
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="ResizeMode" Value="CanResize" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Century Gothic" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid >
+                        <Border x:Name="MainBorder" 
+                                BorderBrush="#FF2E323D" 
+                                BorderThickness="1" 
+                                CornerRadius="2" 
+                                Background="{DynamicResource CouleurFondMenu}"
+                                 
+                                >
+                            <DockPanel LastChildFill="True">
+                                <Rectangle x:Name="PART_LEFT_BORDER" 
+                                           Width="4" 
+                                           Cursor="SizeWE">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="#FF2E323D" />
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Rectangle x:Name="PART_RIGHT_BORDER" 
+                                           Cursor="SizeWE" 
+                                           Width="4" 
+                                           DockPanel.Dock="Right">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="#FF2E323D" />
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Rectangle x:Name="PART_TOP_BORDER" 
+                                           Cursor="SizeNS" 
+                                           DockPanel.Dock="Top" 
+                                           Height="4">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="#FF2E323D" />
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Rectangle x:Name="PART_BOTTOM_BORDER" 
+                                           Cursor="SizeNS" 
+                                           Height="4" 
+                                           DockPanel.Dock="Bottom">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="#FF2E323D" />
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Border x:Name="PART_TITLEBAR" 
+                                        Margin="0" 
+                                        Height="30" 
+                                        DockPanel.Dock="Top"
+                                        CornerRadius="2" 
+                                        Background="Transparent" MouseLeftButtonDown="MoveWindow" MouseMove="OnBorderMouseMove" >
+                                    <DockPanel LastChildFill="False">
+                                        <Border Height="30" Width="30" Background="#FF383E4C">
+                                            <Image Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Left" HorizontalAlignment="Stretch" Width="30" Height="30" OpacityMask="White" Stretch="None"/>
+                                        </Border>
+                                        <TextBlock Margin="4,0,0,0" 
+                                                   VerticalAlignment="Center" 
+                                                   FontStretch="UltraExpanded" 
+                                                   Foreground="White" 
+                                                   TextTrimming="CharacterEllipsis" 
+                                                   TextWrapping="NoWrap" 
+                                                   Text="{TemplateBinding Title}" 
+                                                   FontSize="16" FontFamily="Century Gothic" HorizontalAlignment="Left" />
+                                        <Button x:Name="PART_CLOSE"  Focusable="False"
+                                                DockPanel.Dock="Right"
+                                                Cursor="Hand"
+                                                VerticalAlignment="Stretch" 
+                                                Margin="0" Width="30" Background="#FF383E4C" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" Height="30" BorderThickness="0" Click="PART_CLOSE_Click" IsCancel="False"  >
+
+                                            <Button.Style>
+                                                <Style  TargetType="{x:Type Button}">
+                                                    <Setter  Property="Cursor" Value="Hand"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Grid x:Name="gFermer" Background="{TemplateBinding Background}" >
+                                                                    <TextBlock Text="X" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Padding="0" Foreground="White" RenderTransformOrigin="0.5,0.5" Width="Auto" Margin="1,0,0,0" >
+                                                                        <TextBlock.RenderTransform>
+                                                                            <TransformGroup>
+                                                                                <ScaleTransform ScaleX="1.5"/>
+                                                                            </TransformGroup>
+                                                                        </TextBlock.RenderTransform></TextBlock>
+                                                                </Grid>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="true">
+                                                                        <Setter TargetName="gFermer" Property="Background" Value="#FF6C7383"></Setter>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+
+                                                </Style>
+
+                                            </Button.Style>
+                                        </Button>
+
+                                        
+
+                                    </DockPanel>
+                                </Border>
+
+                                <!-- Title bar separator-->
+                                <Border Height="4" 
+                                        DockPanel.Dock="Top" Background="#FF2E323D" 
+                                         />
+
+                                <!-- Actual Window Content -->
+                                <AdornerDecorator DockPanel.Dock="Bottom">
+                                    <ContentPresenter />
+                                </AdornerDecorator>
+                            </DockPanel>
+                        </Border>
+                        <ContentControl Content="{Binding CurrentPage}" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Window.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Name="FormFadeAnimation" Storyboard.TargetProperty="(Window.Opacity)"
+                                     From="0.0" To="1.0" Duration="0:0:0.2" AutoReverse="False" RepeatBehavior="1x" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    <Style TargetType="TabItem" x:Key="EtapeGeneraFi">
+        <Setter Property="DockPanel.Dock" Value="Right"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="Parent"  Cursor="Hand" Margin="0,5,0,-4" BorderBrush="{x:Null}" BorderThickness="1" Grid.ColumnSpan="1" CornerRadius="4" RenderTransformOrigin="0.5,0.5" Background="WhiteSmoke" UseLayoutRounding="False" Height="40" Width="Auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" FlowDirection="LeftToRight">
+                        <Grid Margin="5,0" Panel.ZIndex="100" RenderTransformOrigin="0.5,0.5">
+                            <StackPanel HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="27" Margin="3,4.349,0,0">
+                                <Ellipse x:Name="ElipseEtape" HorizontalAlignment="Left" Height="23" Margin="0" VerticalAlignment="Top" Width="23" Fill="#FF78CD51">
+                                    <Ellipse.Stroke>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+                                    </Ellipse.Stroke>
+                                </Ellipse>
+                                <Label x:Name="LbEtape" Content="{Binding TabIndex, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2.833,-29,4.167,0" Width="20" TextOptions.TextFormattingMode="Display" Height="27" FontFamily="Century Gothic" FontSize="14.667">
+                                    <Label.Foreground>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+                                    </Label.Foreground>
+                                </Label>
+                            </StackPanel>
+                            <Label x:Name="lbHeader" Content="{TemplateBinding Header}" HorizontalAlignment="Center" Margin="25,-5,0,0" VerticalAlignment="Center" FontFamily="Century Gothic" Background="Transparent" BorderThickness="3,0,0,0" FontSize="16" FontWeight="Bold">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+                                </Label.Foreground>
+                            </Label>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Parent" Property="Background" Value="#33FFFFFF" />
+                            <Setter TargetName="Parent" Property="Effect" Value="{x:Null}" />
+                            <Setter TargetName="lbHeader" Property="Foreground" Value="#FFFFFF" />
+                            <Setter TargetName="ElipseEtape" Property="Fill" Value="#FF3C5BAD" />
+                            <Setter TargetName="ElipseEtape" Property="Stroke" Value="White" />
+                            <Setter TargetName="LbEtape" Property="Foreground" Value="White" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsSelected" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Parent" Property="Background" Value="#66FFFFFF" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TabItem" x:Key="OngleGeneraFi">
+        <Setter Property="DockPanel.Dock" Value="Right"></Setter>
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="Parent"  Cursor="Hand" Margin="0,0,0,-6" BorderBrush="{x:Null}" BorderThickness="1" Grid.ColumnSpan="1" CornerRadius="4" RenderTransformOrigin="0.5,0.5" Background="WhiteSmoke" UseLayoutRounding="False" Height="30" Width="Auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" FlowDirection="LeftToRight">
+                        <Grid Margin="5,0" Panel.ZIndex="100" RenderTransformOrigin="0.5,0.5">
+                            <!--<StackPanel HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="27" Margin="3,4.349,0,0">
+                                <Ellipse x:Name="ElipseEtape" HorizontalAlignment="Left" Height="23" Margin="0" VerticalAlignment="Top" Width="23" Fill="#FF78CD51">
+                                    <Ellipse.Stroke>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+                                    </Ellipse.Stroke>
+                                </Ellipse>
+                                <Label x:Name="LbEtape" Content="{Binding TabIndex, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2.833,-29,4.167,0" Width="20" TextOptions.TextFormattingMode="Display" Height="27" FontFamily="Century Gothic" FontSize="14.667">
+                                    <Label.Foreground>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+                                    </Label.Foreground>
+                                </Label>
+                            </StackPanel>-->
+                            <Label x:Name="lbHeader" Content="{TemplateBinding Header}" HorizontalAlignment="Center" Margin="0,-5,0,0" VerticalAlignment="Center" FontFamily="Century Gothic" Background="Transparent" BorderThickness="3,0,0,0" FontSize="16" FontWeight="Bold">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+                                </Label.Foreground>
+                            </Label>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Parent" Property="Background" Value="#33FFFFFF" />
+                            <Setter TargetName="Parent" Property="Effect" Value="{x:Null}" />
+                            <Setter TargetName="lbHeader" Property="Foreground" Value="#FFFFFF" />
+                            <!--<Setter TargetName="ElipseEtape" Property="Fill" Value="#FF3C5BAD" />
+                            <Setter TargetName="ElipseEtape" Property="Stroke" Value="White" />
+                            <Setter TargetName="LbEtape" Property="Foreground" Value="White" />-->
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsSelected" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Parent" Property="Background" Value="#66FFFFFF" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
